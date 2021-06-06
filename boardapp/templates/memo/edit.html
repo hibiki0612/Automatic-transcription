@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+
+{% block title %}my-blog-new{% endblock %}
+
+{% block jumbotron %}
+<h1 class="h3">Memo Edit Page</h1>
+{% endblock %}
+{% block body %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="memo_form">
+    <p><label for="title_input">title</label></p>
+    <input class="form-title" type="title" name="title" id="text_input" value="{{ memo.title }}"></input>
+    </div>
+    <div class = memo>
+        <div class = memo_title>
+            <p><label for="text_area">speech-to-text</label></p>
+            <p><textarea class="form-control" name="text" id="text_area" cols="70" rows="50">{{ memo.text }}</textarea></p>
+            
+        </div>
+
+        <div class = memo_text>
+            <p><label for="text_area">mymemo</label></p>
+            <p><textarea class="form-control" name="mytext" id="text_area1" cols="70" rows="50">{{memo.mytext }}</textarea></p>
+        </div>
+        
+        <div class="memo_form">
+            <button id="start-btn" type="submit">update</button>
+            <button id="stop-btn" href="{% url 'view_article' memo.pk%}">cancel</button>
+        
+        </div>
+    </div>
+
+</form>
+{% endblock %}

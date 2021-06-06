@@ -1,0 +1,52 @@
+
+
+.form-title{
+  font-size: 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding-bottom: 8px;
+  box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+
+#start-btn {
+  font-size: 18px;
+  display: inline-block;
+  background: #ffffff;
+  color: #999999;
+  width: 80px;
+  height: 80px;
+  border: double 4px #999999;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  }
+#stop-btn {
+  font-size: 18px;
+  display: inline-block;
+  background: #ffffff;
+  color: #999999;
+  width: 80px;
+  height: 80px;
+  border: double 4px #999999;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn {
+  font-size: 18px;
+  display: inline-block;
+  background: #ffffff;
+  color: #999999;
+  width: 80px;
+  height: 80px;
+  border: double 4px #999999;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  
+}

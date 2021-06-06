@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block title %}{{ memo.title }}{% endblock %}
+
+{% load static %}
+
+{% block jumbotron %}
+<h1 class="h3">Edit Memo</h1>
+
+{% endblock %}
+
+{% block body %}
+<section class="card">
+    <img class="card-img" src="{% static  'pc1.jpg'%}" alt="">
+    <div class="card-content">
+      <h1 class="card-title" >{{memo.title}}</h1>
+      <p class="card-text">{{memo.text}}</p>
+    </div>
+    <div class="card-link">
+        <a class="nav-list-item" href="{% url 'list' %}">List</a>
+        
+        <a class="nav-list-item"href="{% url 'new' %}">New</a>
+    </div>
+  </section>
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{%load static%}
+{% block title %}article all{% endblock %}
+{% block customcss %}
+<link href="{% static 'style.css' %}" rel="stylesheet">
+{% endblock customcss %}
+{% block jumbotron %}
+<h1 class="h3">Memo List</h1>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    {% for memo in memos %}
+    
+    <section class="card">
+        <img class="card-img" src="{% static  'bear.jpg'%}" alt="">
+        <div class="card-content">
+          <h1 class="card-title" >{{memo.title}}</h1>
+          <p class="card-text">{{memo.text}}</p>
+        </div>
+        <div class="card-link">
+          <a href="{% url 'edit' memo.pk %}">編集</a>
+          <a href="{% url 'delete' memo.pk %}">削除</a>
+        </div>
+      </section>
+    {% endfor %}
+    
+
+  
+  
+</div>
+
+{% endblock %}
+
+
+

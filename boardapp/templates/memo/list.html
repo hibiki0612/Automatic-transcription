@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}my-blog-new{% endblock %}
+
+{% block jumbotron %}
+<h1 class="h3">Transrate List</h1>
+<h4 class="h3">memolistの中身が要約された物になります</h3>
+<h4 class="h3">内容を素早く読むためにお使いください</h3>
+{% endblock %}
+
+{% block body %}
+<form method="post">
+
+{% csrf_token %}
+
+
+<div class="row">
+
+    {% for memo in data %}
+        
+        <section class="card">
+            <img class="card-img" src="{% static  'pc.jpg'%}" alt="">
+            
+            <div class="card-content">
+                <p class="card-text">{{memo.title}}</p>
+            </div>
+            
+            </section>
+        {% if not forloop.last %}
+
+        {% endif %}
+
+        {% empty %}
+        <section class="card">
+            <img class="card-img" src="{% static  'pc.png'%}" alt="">
+            <div class="card-content">
+                <p class="card-text">空です</p>
+            </div>
+            
+            </section>
+    {% endfor %}
+ 
+</div>
+
+
+
+</form>
+{% endblock %}

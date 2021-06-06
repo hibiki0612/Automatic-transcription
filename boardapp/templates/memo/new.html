@@ -1,0 +1,83 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}article all{% endblock %}
+{% block jumbotron %}
+<h1 class="h3">New Memo</h1>
+<h3 class="h3">stt startを押すと，音声から内容を入力することができます．</h3>
+<h4 class="h3">#GoogleChroneのみ対応</h3>
+{% endblock %}
+{% block body %}
+<div class="memo_form">
+    <button id="start-btn">stt start</button>
+    <button id="stop-btn">stt stop</button>
+    </div>
+    {% block content %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="memo_form">
+            <p><label for="title_input">title</label></p>
+            <input class="form-title" type="title" name="title" id="text_input"></input>
+            </div>
+            <div class = memo>
+                <div class = memo_title>
+                    <p><label for="text_area">speech-to-text</label></p>
+                    <p><textarea class="form-control" name="text" id="text_area" cols="70" rows="50"></textarea></p>
+                    
+                </div>
+
+                <div class = memo_text>
+                    <p><label for="text_area">mymemo</label></p>
+                    <p><textarea class="form-control" name="mytext" id="text_area1" cols="70" rows="50"></textarea></p>
+                </div>
+            </div>
+            <div class =memo_form>
+            <p><button class="btn" type="submit">投稿</button></p>
+                </div>
+        </form>
+       
+              
+   
+              
+  
+    {% endblock %}
+
+    <script>
+
+
+        
+        const startBtn = document.querySelector('#start-btn');
+        const stopBtn = document.querySelector('#stop-btn');
+        const resultDiv = document.querySelector('#result-div');
+      
+        SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+        let recognition = new SpeechRecognition();
+      
+        recognition.lang = 'ja-JP';
+        recognition.interimResults = true;
+        recognition.continuous = true;
+      
+        let finalTranscript = ''; // 確定した(黒の)認識結果
+      
+        recognition.onresult = (event) => {
+          let interimTranscript = ''; // 暫定(灰色)の認識結果
+          for (let i = event.resultIndex; i < event.results.length; i++) {
+            let transcript = event.results[i][0].transcript;
+            if (event.results[i].isFinal) {
+              finalTranscript += transcript+'。';
+            } else {
+              interimTranscript = transcript;
+            }
+          }
+          text_area.innerHTML = finalTranscript + interimTranscript;
+        }
+      
+        startBtn.onclick = () => {
+          recognition.start();
+        }
+        stopBtn.onclick = () => {
+          recognition.stop();
+        }
+      </script>
+      
+{% endblock %}
